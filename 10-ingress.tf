@@ -10,8 +10,10 @@ resource "kubernetes_ingress" "ingress" {
   }
   wait_for_load_balancer = true
   spec {
-    rule {
-      host = var.dns_fqdn
+    dynamic "rule" {
+    for_each = flatten(list(var.dns_fqdn))
+    content {
+      host = rule.value
       http {
         path {
           path = "/"
@@ -21,11 +23,12 @@ resource "kubernetes_ingress" "ingress" {
           }
         }
       }
+      }
     }
     dynamic "tls" {
       for_each = var.tls_enabled ? [1] : []
       content {
-          hosts        = [ var.dns_fqdn ]
+          hosts       = flatten(list(var.dns_fqdn))
           secret_name = kubernetes_secret.ingress[0].metadata[0].name
       }
     }

@@ -30,7 +30,7 @@ module "ingress" {
 | Variable              | Required | Default          | Description                                        |
 | --------------------- | -------- | -------          | -------------------------------------------------- |
 | `object_prefix`       | Yes      | N/A              | Unique name to prefix all objects with             |
-| `dns_fqdn`            | Yes      | N/A              | FQDN of the application                            |
+| `dns_fqdn`            | Yes      | N/A              | FQDN of the application - list or string           |
 | `dns_zone`            | Yes      | N/A              | DNS zone name                                      |
 | `namespace`           | Yes      | N/A              | Kubernetes namespace to deploy ingress into        |
 | `service_name`        | Yes      | N/A              | Service name for backend                           |
@@ -40,3 +40,21 @@ module "ingress" {
 | `dns_record_ttl`      | No       | `600`            | TTL for DNS record                                 |
 | `cert_issuer_type`    | No       | `issuer`         | Cert-Manager issuer type                           |
 | `cert_issuer_name`    | No       | `self-signed`    | Cert-Manager issuer name                           |
+
+### FQDN
+
+The ingress host is set by the variable `dns_fqdn`. This can be either a sting:
+
+```
+module "ingress" {
+  dns_fqdn         = "www.example.com"
+}
+```
+
+or a list:
+
+```
+module "ingress" {
+  dns_fqdn         = ["www1.example.com", "www2.example.com"]
+}
+```
