@@ -6,8 +6,8 @@ terraform {
       version = ">= 1.13.1"
     }
     powerdns   = {
-      source  = "terraform-providers/powerdns"
-      version = "~>1.3"
+      source  = "pan-net/powerdns"
+      version = ">= 1.3"
     }
   }
 }
