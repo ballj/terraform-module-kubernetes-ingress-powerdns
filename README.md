@@ -2,8 +2,6 @@
 
 This terraform module deploys an ingress on kubernetes and updates DNS.
 
-DNS support is limited to the powerdns provider.
-
 ## Deployment
 
 ```
@@ -25,6 +23,12 @@ module "ingress" {
 }
 ```
 
+## Providers
+
+This module uses the following Terraform providers:
+ - [pan-net/PowerDNS](https://registry.terraform.io/providers/pan-net/powerdns/latest/docs)
+ - [Kubernetes](https://registry.terraform.io/providers/hashicorp/kubernetes/latest)
+
 ## Variables
 
 | Variable              | Required | Default          | Description                                        |
@@ -40,6 +44,10 @@ module "ingress" {
 | `dns_record_ttl`      | No       | `600`            | TTL for DNS record                                 |
 | `cert_issuer_type`    | No       | `issuer`         | Cert-Manager issuer type                           |
 | `cert_issuer_name`    | No       | `self-signed`    | Cert-Manager issuer name                           |
+
+## Outputs
+
+This module does not have any outputs
 
 ### FQDN
 
