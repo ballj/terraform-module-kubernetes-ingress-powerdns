@@ -4,5 +4,5 @@ resource "powerdns_record" "ingress" {
   name     = format("%s.", each.value)
   type     = "A"
   ttl      = var.dns_record_ttl
-  records  = [ kubernetes_ingress.ingress.load_balancer_ingress[0].ip ]
+  records  = [ kubernetes_ingress.ingress.status.0.load_balancer.0.ingress.0.ip ]
 }

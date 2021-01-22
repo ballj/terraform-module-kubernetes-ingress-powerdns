@@ -3,7 +3,7 @@ terraform {
   required_providers {
     kubernetes = {
       source  = "hashicorp/kubernetes"
-      version = ">= 1.13.1"
+      version = ">= 2.0.1"
     }
     powerdns   = {
       source  = "pan-net/powerdns"
