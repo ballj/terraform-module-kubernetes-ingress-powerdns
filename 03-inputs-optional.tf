@@ -8,6 +8,11 @@ variable "ingress_class" {
   default     = "traefik"
 }
 
+variable "ingress_annotations" {
+  description = "Annotations to add to ingress"
+  default     = {}
+}
+
 variable "tls_enabled" {
   description = "Ingress class to use"
   type        = bool

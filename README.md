@@ -40,6 +40,7 @@ This module uses the following Terraform providers:
 | `service_name`        | Yes      | N/A              | Service name for backend                           |
 | `service_port`        | No       | N/A              | Service port to use for backend                    |
 | `ingress_class`       | No       | `traefik`        | Kubernetes ingress class annotation                |
+| `ingress_annotations` | No       | `{}`             | Annotations to add to ingress                      |
 | `tls_enabled`         | No       | `true`           | Enable TLS on the ingress                          |
 | `dns_record_ttl`      | No       | `600`            | TTL for DNS record                                 |
 | `cert_issuer_type`    | No       | `issuer`         | Cert-Manager issuer type                           |

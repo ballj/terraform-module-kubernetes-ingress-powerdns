@@ -4,7 +4,8 @@ resource "kubernetes_ingress" "ingress" {
     name        = var.object_prefix
     annotations = merge({
       "kubernetes.io/ingress.class" = var.ingress_class },
-      var.tls_enabled ? { format("%s/%s", "cert-manager.io", var.cert_issuer_type) = var.cert_issuer_name } : {}
+      var.tls_enabled ? { format("%s/%s", "cert-manager.io", var.cert_issuer_type) = var.cert_issuer_name } : {},
+      var.ingress_annotations
     )
     labels = local.common_labels
   }
