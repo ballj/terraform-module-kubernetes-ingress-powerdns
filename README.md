@@ -1,6 +1,7 @@
 # Terraform Kubernetes Ingress
 
-This terraform module deploys an ingress on kubernetes and updates DNS.
+This terraform module deploys an ingress on kubernetes, updates DNS (PowerDNS)
+and adds to monitoring (Icinga2).
 
 ## Deployment
 
@@ -28,6 +29,7 @@ module "ingress" {
 This module uses the following Terraform providers:
  - [pan-net/PowerDNS](https://registry.terraform.io/providers/pan-net/powerdns/latest/docs)
  - [Kubernetes](https://registry.terraform.io/providers/hashicorp/kubernetes/latest)
+ - [Icinga2](https://registry.terraform.io/providers/Icinga/icinga2/latest)
 
 ## Variables
 
@@ -45,6 +47,9 @@ This module uses the following Terraform providers:
 | `dns_record_ttl`      | No       | `600`            | TTL for DNS record                                 |
 | `cert_issuer_type`    | No       | `issuer`         | Cert-Manager issuer type                           |
 | `cert_issuer_name`    | No       | `self-signed`    | Cert-Manager issuer name                           |
+| `monitoring_uri`      | No       | `/`              | The request URI for GET or POST                    |
+| `monitoring_expect`   | No       | `200 OK`         | String expected in first line of the response      |
+| `monitoring_vars`     | No       | `{}`             | Extra variables to pass to monitor                 |
 
 ## Outputs
 
